@@ -7,6 +7,10 @@ const path=require('path') ;
 
 const app=express() ;
 const bodyParser=require('body-parser');
+
+const http=require('http');
+const server=http.Server(app);
+
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 app.engine('ejs',engine) ;
@@ -38,7 +42,7 @@ app.get('/register',(req,res)=>{
     res.render('register')
 });
 
-app.listen(process.env.PORT || 7500,'0.0.0.0',()=>{
+server.listen(process.env.PORT || 7500,'0.0.0.0',()=>{
     //console.log(app.get('views'))
     
     console.log(`Express running→PORT 7500`);
